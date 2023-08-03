@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.lucasprioste.rickandmorty.ui.theme.RickAndMortyTheme
+import com.lucasprioste.rickandmorty.presentation.core.navigation.Navigation
+import com.lucasprioste.rickandmorty.presentation.core.ui.theme.RickAndMortyTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
@@ -24,28 +26,20 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             RickAndMortyTheme {
+
                 val systemUiController = rememberSystemUiController()
                 systemUiController.setSystemBarsColor(
                     color = MaterialTheme.colors.primary
                 )
-                // A surface container using the 'background' color from the theme
+
+                val navController = rememberNavController()
+
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    Navigation(
+                        navController = navController
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    RickAndMortyTheme {
-        Greeting("Android")
     }
 }
