@@ -17,7 +17,9 @@ private val LightColorPalette = lightColors(
     primary = BlueLight,
     onPrimary = White,
     background = White,
-    onBackground = Black
+    onBackground = Black,
+    surface = Green,
+    onSurface = White
 )
 
 @Composable
