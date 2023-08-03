@@ -33,7 +33,6 @@ fun CharacterItem(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(CardWidth)
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
