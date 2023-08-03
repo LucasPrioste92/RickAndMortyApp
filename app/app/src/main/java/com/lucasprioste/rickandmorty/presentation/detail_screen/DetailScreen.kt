@@ -31,10 +31,7 @@ import com.lucasprioste.rickandmorty.core.Const.MarginHor
 import com.lucasprioste.rickandmorty.domain.model.Character
 import com.lucasprioste.rickandmorty.domain.model.Gender
 import com.lucasprioste.rickandmorty.domain.model.Status
-import com.lucasprioste.rickandmorty.presentation.core.ui.theme.Alive
-import com.lucasprioste.rickandmorty.presentation.core.ui.theme.Dead
-import com.lucasprioste.rickandmorty.presentation.core.ui.theme.Unknown
-import com.lucasprioste.rickandmorty.presentation.core.ui.theme.White
+import com.lucasprioste.rickandmorty.presentation.core.ui.theme.*
 import com.lucasprioste.rickandmorty.presentation.detail_screen.components.InformationItem
 
 @Composable
@@ -91,7 +88,8 @@ fun DetailScreen(
                     modifier = Modifier
                         .size(35.dp)
                         .padding(5.dp)
-                        .align(Alignment.Center)
+                        .align(Alignment.Center),
+                    tint = Black
                 )
             }
         }
