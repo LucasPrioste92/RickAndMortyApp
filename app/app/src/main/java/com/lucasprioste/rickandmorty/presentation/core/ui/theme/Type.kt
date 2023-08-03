@@ -1,4 +1,4 @@
-package com.lucasprioste.rickandmorty.ui.theme
+package com.lucasprioste.rickandmorty.presentation.core.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
