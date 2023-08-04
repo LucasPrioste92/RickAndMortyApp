@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">RickAndMorty</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="genderless">genderless</string>
+    <string name="unknown">unknown</string>
+    <string name="alive">alive</string>
+    <string name="dead">dead</string>
+    <string name="arrow_back">Arrow Back</string>
+    <string name="status_life">Status Icon</string>
+    <string name="icon_description">Born Icon</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="search">search</string>
+    <string name="menu_icon">Menu icon</string>
+    <string name="filters">Filters</string>
+    <string name="someting_went_wrong">Something Went Wrong</string>
+    <string name="offline_mode">Offline Mode</string>
+    <string name="no_match_data">No data found, please change the parameters!</string>
 </resources>
