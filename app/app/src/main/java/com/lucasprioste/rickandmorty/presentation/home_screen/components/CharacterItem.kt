@@ -11,12 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.lucasprioste.rickandmorty.R
 import com.lucasprioste.rickandmorty.core.Const.CardWidth
 import com.lucasprioste.rickandmorty.domain.model.Character
 
@@ -42,6 +44,7 @@ fun CharacterItem(
                 contentDescription = character.name,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
+                error = painterResource(id = R.drawable.error_network_icon)
             )
             Box(
                 modifier = Modifier

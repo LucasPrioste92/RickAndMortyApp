@@ -39,7 +39,7 @@ fun InformationItem(
             contentDescription = stringResource(id = iconDescription)
         )
         Text(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
             text = textValue.replaceFirstChar { it.uppercase() },
             textAlign = TextAlign.Center,
             maxLines = 2,

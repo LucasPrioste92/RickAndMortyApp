@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -30,6 +31,7 @@ import com.lucasprioste.rickandmorty.core.Const.HeightCard
 import com.lucasprioste.rickandmorty.core.Const.MarginHor
 import com.lucasprioste.rickandmorty.domain.model.Character
 import com.lucasprioste.rickandmorty.domain.model.Gender
+import com.lucasprioste.rickandmorty.domain.model.InformationItemData
 import com.lucasprioste.rickandmorty.domain.model.Status
 import com.lucasprioste.rickandmorty.presentation.core.ui.theme.*
 import com.lucasprioste.rickandmorty.presentation.detail_screen.components.InformationItem
@@ -37,19 +39,13 @@ import com.lucasprioste.rickandmorty.presentation.detail_screen.components.Infor
 @Composable
 fun DetailScreen(
     character: Character,
+    informationItems: List<InformationItemData>,
     navController: NavController
 ){
     val colorStatus: Color = when(character.status){
         is Status.Alive -> Alive
         is Status.Dead -> Dead
         is Status.Unknown -> Unknown
-    }
-
-    val genderIcon: Int = when(character.gender){
-        Gender.Female -> R.drawable.female_icon
-        Gender.Genderless -> R.drawable.genderless_icon
-        Gender.Male -> R.drawable.male_icon
-        Gender.Unknown -> R.drawable.genderless_icon
     }
 
     Column(
@@ -70,6 +66,7 @@ fun DetailScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentDescription = character.name,
                 contentScale = ContentScale.Crop,
+                error = painterResource(id = R.drawable.error_network_icon)
             )
             Card(
                 modifier = Modifier
@@ -126,44 +123,14 @@ fun DetailScreen(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 columns = GridCells.Adaptive(CardWidth)
             ) {
-                item {
+                items(informationItems) {
                     InformationItem(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(HeightCard),
-                        icon = R.drawable.born_icon,
-                        iconDescription = R.string.icon_description,
-                        textValue = character.origin
-                    )
-                }
-                item {
-                    InformationItem(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(HeightCard),
-                        icon = R.drawable.location_icon,
-                        iconDescription = R.string.location_icon,
-                        textValue = character.location
-                    )
-                }
-                item {
-                    InformationItem(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(HeightCard),
-                        icon = R.drawable.specie_icon,
-                        iconDescription = R.string.icon_description,
-                        textValue = character.species
-                    )
-                }
-                item {
-                    InformationItem(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(HeightCard),
-                        icon = genderIcon,
-                        iconDescription = R.string.icon_description,
-                        textValue = stringResource(id = character.gender.resourceId)
+                        icon = it.icon,
+                        iconDescription = it.iconDescription,
+                        textValue = it.textValue
                     )
                 }
             }

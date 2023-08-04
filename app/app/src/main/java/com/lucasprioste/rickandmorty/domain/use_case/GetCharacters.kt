@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.Flow
 class GetCharacters constructor(
     private val repository: RickAndMortyRepository
 ) {
-    fun getAll(): Flow<PagingData<Character>> {
-        return repository.getCharacters()
+    fun getAll(searchName: String, status: String?=null, gender: String?=null): Flow<PagingData<Character>> {
+        return repository.getCharacters(searchName = searchName, status = status, gender = gender)
     }
     suspend fun getById(id: Int): Character{
-        return repository.getCharacterById(id)
+        return repository.getCharacterById(id = id)
     }
 }

@@ -2,12 +2,9 @@ package com.lucasprioste.rickandmorty.presentation.core.navigation
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -36,9 +33,15 @@ fun Navigation(
             route = Route.HomeScreen.route,
         ) {
             val viewModel = hiltViewModel<HomeViewModel>()
-            val characters = viewModel.charactersPagingFlow.collectAsLazyPagingItems()
+            val characters = viewModel.characters.collectAsLazyPagingItems()
+            val filterState = viewModel.filterState.collectAsState().value
+
             HomeScreen(
                 characters = characters,
+                searchInput = filterState.searchName,
+                filterGender = filterState.filterGender,
+                filterStatus = filterState.filterStatus,
+                onEvent = viewModel::onEvent,
                 navController = navController
             )
         }
@@ -67,8 +70,10 @@ fun Navigation(
         ) {
             val viewModel = hiltViewModel<DetailViewModel>()
             val character = viewModel.character.collectAsState().value
+            val informationItems = viewModel.informationItems.collectAsState().value
             DetailScreen(
                 character = character,
+                informationItems = informationItems,
                 navController = navController
             )
         }

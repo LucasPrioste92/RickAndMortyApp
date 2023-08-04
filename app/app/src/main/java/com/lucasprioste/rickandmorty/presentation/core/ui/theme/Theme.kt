@@ -10,12 +10,14 @@ private val DarkColorPalette = darkColors(
     primary = BlueNight,
     onPrimary = White,
     background = Gray,
-    onBackground = White
+    onBackground = White,
+    surface = Green,
+    onSurface = White
 )
 
 private val LightColorPalette = lightColors(
     primary = BlueLight,
-    onPrimary = White,
+    onPrimary = Black,
     background = White,
     onBackground = Black,
     surface = Green,
